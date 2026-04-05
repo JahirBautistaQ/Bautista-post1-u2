@@ -10,6 +10,7 @@ package com.patrones.u2;
 
 
 
+/* Punto 5 correccion para no pausar ejecucion 
 
 public class App {
     public static void main(String[] args) {
@@ -25,12 +26,13 @@ public class App {
             Notifier error = NotifierFactory.create("whatsapp");
             error.send("Jahir", "Esto no debería enviarse");
         } catch (IllegalArgumentException e) {
-            System.out.println("⚠️ ERROR CONTROLADO: " + e.getMessage());
+            System.out.println("ERROR CONTROLADO: " + e.getMessage());
         }
 
         NotificationLogger.INSTANCE.printAll();
     }
 }
+
 
 
 
