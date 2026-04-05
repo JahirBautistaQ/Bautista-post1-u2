@@ -8,6 +8,54 @@ package com.patrones.u2;
 
 
 
+
+
+
+public class App {
+    public static void main(String[] args) {
+
+        Notifier email = NotifierFactory.create("email");
+        Notifier sms = NotifierFactory.create("sms");
+
+        email.send("correo@gmail.com", "Hola desde factory");
+        sms.send("3001234567", "Hola desde factory");
+
+        // Manejo del error (forma correcta)
+        try {
+            Notifier error = NotifierFactory.create("whatsapp");
+            error.send("Jahir", "Esto no debería enviarse");
+        } catch (IllegalArgumentException e) {
+            System.out.println("⚠️ ERROR CONTROLADO: " + e.getMessage());
+        }
+
+        NotificationLogger.INSTANCE.printAll();
+    }
+}
+
+
+
+/* Punto 5 demostracion de que la facory valida tipos 
+public class App {
+    public static void main(String[] args) {
+
+        Notifier email = NotifierFactory.create("email");
+        Notifier sms = NotifierFactory.create("sms");
+
+        email.send("correo@gmail.com", "Hola desde factory");
+        sms.send("3001234567", "Hola desde factory");
+
+        // Esto debe lanzar error (Checkpoint 2)
+        Notifier error = NotifierFactory.create("whatsapp");
+
+        NotificationLogger.INSTANCE.printAll();
+    }
+}
+
+
+
+
+
+/*
 public class App {
     public static void main(String[] args) {
 
@@ -22,6 +70,9 @@ public class App {
         NotificationLogger.INSTANCE.printAll();
     }
 }
+*/
+
+
 
 /*
 Prueba 2
